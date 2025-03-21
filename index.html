@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistem Manajemen Transportasi</title>
+
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+  <!-- HEADER -->
+  <header class="bg-dark text-white py-3">
+    <div class="container text-center">
+      <h1 class="fw-bold">Sistem Manajemen Transportasi</h1>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container my-4 flex-grow-1">
+    <div class="row g-4">
+
+      <!-- FORM -->
+      <div class="col-lg-4">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0" id="formTitle">Form Penyewaan</h4>
+          </div>
+          <div class="card-body">
+            <form id="formPelanggan">
+              <input type="hidden" id="editIndex" value="-1"/>
+              <div class="mb-3">
+                <label for="nama" class="form-label fw-semibold">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" required/>
+              </div>
+              <div class="mb-3">
+                <label for="nomorTelepon" class="form-label fw-semibold">Nomor Telepon</label>
+                <input type="tel" class="form-control" id="nomorTelepon" placeholder="08xxxxxxxxxx" required/>
+              </div>
+              <div class="mb-3">
+                <label for="kendaraanDisewa" class="form-label fw-semibold">Kendaraan Disewa</label>
+                <select class="form-select" id="kendaraanDisewa" required>
+                  <option selected disabled>Pilih kendaraan</option>
+                  <option value="Mobil">Mobil</option>
+                  <option value="Motor">Motor</option>
+                  <option value="Bus">Bus</option>
+                  <option value="Truk">Truk</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success w-100">
+                <i class="bi bi-check-circle-fill"></i> <span id="btnSubmitText">Sewa Sekarang</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABEL PELANGGAN -->
+      <div class="col-lg-8">
+        <div class="card shadow">
+          <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Daftar Penyewa Kendaraan</h4>
+            <input type="text" id="filterInput" class="form-control w-50" placeholder="🔍 Filter nama/kendaraan"/>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover mb-0 align-middle" id="tabelPelanggan">
+                <thead class="table-dark text-center">
+                  <tr>
+                    <th onclick="sortTabel('nama')" style="cursor:pointer;">Nama <i class="bi bi-sort-alpha-down"></i></th>
+                    <th onclick="sortTabel('nomorTelepon')" style="cursor:pointer;">Telepon <i class="bi bi-sort-numeric-down"></i></th>
+                    <th onclick="sortTabel('kendaraanDisewa')" style="cursor:pointer;">Kendaraan <i class="bi bi-sort-down"></i></th>
+                    <th>Icon</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center"></tbody>
+              </table>
+            </div>
+            <div class="text-center py-3">
+              <small class="text-muted">Total Penyewa: <span id="totalPelanggan">0</span></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+      <!-- Grafik -->
+  <div class="col-12 mt-4">
+    <div class="card shadow">
+      <div class="card-header bg-info text-white text-center">
+        <h4 class="mb-0">Grafik Penyewaan Kendaraan</h4>
+      </div>
+      <div class="card-body">
+        <canvas id="chartPenyewaan" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  </main>
+
+  
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-2">
+    <p class="mb-0">By BACHRUL ULLUM ASSRORI - Universitas Bhinneka PGRI Tulungagung</p>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+
+</body>
+</html>
